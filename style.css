@@ -1,0 +1,456 @@
+/* =============================
+   Contenedor principal (Wrapper)
+============================= */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* =============================
+     Estilos Generales y Animaciones
+  ============================= */
+  body {
+    background: linear-gradient(135deg, #ffc1cc, #ffdee9);
+    font-family: 'Arial', sans-serif;
+    color: #a80036;
+  }
+  
+  /* Animación de fundido */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Animación de slide-in */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slideIn {
+    animation: slideIn 1s ease-out;
+  }
+  .animate-slideInDelay {
+    animation: slideIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+  }
+  
+  /* =============================
+           Header
+  ============================= */
+  header {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid #d6336c;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #d6336c;
+  }
+  header p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+  }
+  
+  /* =============================
+           Main - Secciones
+  ============================= */
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Sección de introducción y siguientes */
+  .intro, .cards-section, .moments-section, .next-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* =============================
+           Botón Estilizado
+  ============================= */
+  .styled-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #d6336c, #a80036);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .styled-btn:hover {
+    background: linear-gradient(45deg, #a80036, #d6336c);
+    transform: scale(1.05);
+  }
+  
+  /* =============================
+           Cartas Interactivas (index.html)
+  ============================= */
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    width: 150px;
+    text-align: center;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    background-color: #ffe6e9;
+  }
+  
+  /* =============================
+           Mini Cartitas (pagina2.html)
+  ============================= */
+  .mini-cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+  }
+  .mini-card {
+    background: #fff;
+    flex: 0 0 auto;
+    width: 250px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .mini-card:hover {
+    transform: translateY(-5px);
+  }
+  .mini-card p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* =============================
+           Footer
+  ============================= */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 2px solid #d6336c;
+  }
+  
+  /* =============================
+           Modal (Cartitas en index.html)
+  ============================= */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    animation: fadeInModal 0.5s ease-out;
+    z-index: 1000;
+  }
+  @keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+    animation: slideInModal 0.5s ease-out;
+  }
+  @keyframes slideInModal {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #d6336c;
+  }
+  
+  /* =============================
+           Responsive
+  ============================= */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    header p, footer p {
+      font-size: 1rem;
+    }
+    .card {
+      width: 120px;
+      padding: 15px;
+    }
+    .mini-card {
+      width: 200px;
+    }
+    
+  }
+  /* =============================
+         Mini Cartitas (pagina2.html)
+============================= */
+.mini-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .mini-card {
+    background: #fff;
+    flex: 0 0 300px;  /* ancho fijo para que sean verticales */
+    min-height: 180px; /* altura para dar formato vertical */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .mini-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .mini-card p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* =============================
+           Botones de Navegación
+  ============================= */
+  .navigation-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .styled-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #d6336c, #a80036);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .styled-btn:hover {
+    background: linear-gradient(45deg, #a80036, #d6336c);
+    transform: scale(1.05);
+  }
+  /* =============================
+        Carta de Perdón (pagina3.html)
+============================= */
+.letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .letter {
+    background: #ffebf0; /* Fondo rosa pastel */
+    padding: 40px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Georgia', serif;
+    position: relative;
+  }
+  
+  .letter h2 {
+    font-size: 1.8rem;
+    color: #d6336c;
+    margin-bottom: 15px;
+  }
+  
+  .letter p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .letter .signature {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #a80036;
+    margin-top: 20px;
+  }
+  
+  /* =============================
+           Botón de Navegación
+  ============================= */
+  .navigation-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .styled-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #d6336c, #a80036);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .styled-btn:hover {
+    background: linear-gradient(45deg, #a80036, #d6336c);
+    transform: scale(1.05);
+  }
+  /* =============================
+        Carta de Despedida (pagina4.html)
+============================= */
+.letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .farewell-letter {
+    background: linear-gradient(135deg, #ffe6f0, #ffd9e6); /* Fondo degradado rosa pastel */
+    padding: 40px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Georgia', serif;
+    position: relative;
+    border: 2px solid #ff99cc; /* Borde rosa suave */
+  }
+  
+  .farewell-letter h2 {
+    font-size: 2rem;
+    color: #d6336c;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .farewell-letter p {
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+  
+  .farewell-letter .signature {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #a80036;
+    margin-top: 20px;
+  }
+  
+  /* =============================
+          Imagen de Despedida
+  ============================= */
+  .farewell-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .farewell-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* =============================
+           Botón de Navegación
+  ============================= */
+  .navigation-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .styled-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #d6336c, #a80036);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .styled-btn:hover {
+    background: linear-gradient(45deg, #a80036, #d6336c);
+    transform: scale(1.05);
+  }
+  
+  /* =============================
+          Animaciones Suaves
+  ============================= */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  
